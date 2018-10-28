@@ -25,7 +25,6 @@
     Reverse the provided string.
     You may need to turn the string into an array before you can reverse it.
     Your result must be a string.
-    Remember to use Read-Search-Ask if you get stuck. Write your own code.
 */
 
     /* Solution: */
@@ -46,7 +45,6 @@
     For example: 5! = 1 * 2 * 3 * 4 * 5 = 120
 
     Only integers greater than or equal to zero will be supplied to the function.
-    Remember to use Read-Search-Ask if you get stuck. Write your own code.
 */
 
     /* Solution */
@@ -59,3 +57,19 @@
       }
       
       factorialize(5);
+
+/*
+    4.) Find the Longest Word in a String
+
+    Return the length of the longest word in the provided sentence.
+    Your response should be a number.
+*/
+
+      /* Solution */
+
+    function findLongestWordLength(str) { 
+        var str_array = str.split(' ').map(word => word.length);
+        return Math.max(...str_array);
+    }
+    
+    findLongestWordLength("The quick brown fox jumped over the lazy dog");
