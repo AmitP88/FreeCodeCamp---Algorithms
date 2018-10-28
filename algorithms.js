@@ -87,3 +87,20 @@
     const largestOfFour = (arr) => arr.map(sub_arr => Math.max(...sub_arr));
 
     largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+/*
+    6.) Confirm the Ending
+
+    Check if a string (first argument, str) ends with the given target string (second argument, target).
+    This challenge can be solved with the .endsWith() method, which was introduced in ES2015.
+    But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+*/
+
+    /* Solution */
+
+    const confirmEnding = (str, target) => {
+        let substring = str.substring(str.length - target.length);
+        return ((target === substring) ? true : false); 
+    }
+      
+    confirmEnding("Bastian", "n");
