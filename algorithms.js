@@ -104,3 +104,27 @@
     }
       
     confirmEnding("Bastian", "n");
+
+/*
+    7.) Repeat a String Repeat a String
+
+    Repeat a given string str (first argument) for num times (second argument).
+    Return an empty string if num is not a positive number. Do not use repeat() method.
+*/
+
+    /* Solution */
+
+    const repeatStringNumTimes = (str, num) => {
+        if(num < 0) { return '' }
+      
+        let str_array = [];
+        
+        for(let i = 0; i < num; i++){
+          str_array.push(str);
+        }
+      
+        return str_array.join('');
+      }
+      
+      repeatStringNumTimes("abc", 3);
+
