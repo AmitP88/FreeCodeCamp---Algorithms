@@ -170,3 +170,15 @@
       }
       
       findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+/*
+      10.) Boo who
+
+      Check if a value is classified as a boolean primitive. Return true or false.
+*/
+
+      /* Solution */
+
+      const booWho = (bool) => (typeof bool === 'boolean') ? true : false;
+
+      booWho(null);
