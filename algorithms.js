@@ -182,3 +182,22 @@
       const booWho = (bool) => (typeof bool === 'boolean') ? true : false;
 
       booWho(null);
+
+/*
+      11.) Title Case a Sentence
+
+      Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+      For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
+*/
+
+      /* Solution */
+
+      const titleCase = (str) => {
+        let str_array = str.split(' ');
+      
+        let modified_array = str_array.map(word => word.slice(0,1).toUpperCase().concat(word.slice(1, word.length).toLowerCase()));
+      
+        return modified_array.join(' ');
+      }
+      
+      titleCase("I'm a little tea pot");      
