@@ -319,3 +319,23 @@
       }
       
       mutation(["hello", "hey"]);
+
+/*
+      16.) Chunky Monkey
+
+      Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+*/
+
+      /* Solution */
+
+      const chunkArrayInGroups = (arr, size) => {
+        let new_arr = [];
+      
+        for(let i = 0; i < arr.length; size){
+          new_arr.push(arr.splice(i, size));
+        }
+      
+        return new_arr;
+      }
+      
+      chunkArrayInGroups(["a", "b", "c", "d"], 2);
