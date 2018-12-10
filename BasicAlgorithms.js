@@ -12,7 +12,7 @@
 */
 
     /* Solution: */
-    function convertToF(celsius) {
+    const convertToF = (celsius) => {
         let fahrenheit = celsius * 9/5 + 32;
         return fahrenheit;
     }
@@ -29,7 +29,7 @@
 
     /* Solution: */
 
-    function reverseString(str) {
+    const reverseString = (str) => {
         return str.split('').reverse().join('');
     }
       
@@ -49,7 +49,7 @@
 
     /* Solution */
 
-    function factorialize(num) {
+    const factorialize = (num) => {
         if(num === 0) {
           return 1;
         } 
@@ -67,7 +67,7 @@
 
       /* Solution */
 
-    function findLongestWordLength(str) { 
+    const findLongestWordLength = (str) => { 
         var str_array = str.split(' ').map(word => word.length);
         return Math.max(...str_array);
     }
