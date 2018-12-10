@@ -276,3 +276,46 @@
       }
       
       getIndexToIns([40, 60], 50);
+
+/*
+      15.) Mutations
+
+      Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+      For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+      The arguments ["hello", "hey"] should return false because the string "hello" does not contain a "y".
+      Lastly, ["Alien", "line"], should return true because all of the letters in "line" are present in "Alien".
+*/
+
+      /* Solution */
+
+      const mutation = (arr) => {
+        // turn both strings in arr to lowercase
+        arr[0] = arr[0].toLowerCase();
+        arr[1] = arr[1].toLowerCase();
+      
+        // turn each string into it's own array
+        // split each string into letters
+        // sort each string of letters alphabetically
+        let arr1 = arr[0].split('').sort();
+        let arr2 = arr[1].split('').sort();
+      
+        let result = [];
+      
+        // check if arr1 includes all of arr2
+        for(let i = 0; i < arr2.length; i++){
+          if(arr1.includes(arr2[i])){
+            result.push(true);
+          } else {
+            result.push(false);
+          }
+        }
+      
+        // check for false values in result array
+        if(result.includes(false)){
+          return false;
+        } else {
+          return true;
+        }
+      }
+      
+      mutation(["hello", "hey"]);
