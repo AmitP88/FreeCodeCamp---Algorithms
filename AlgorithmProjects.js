@@ -190,3 +190,118 @@ const telephoneCheck = (str) => {
 }
   
 telephoneCheck("555-555-5555");
+
+/*
+  5.) Cash Register
+
+  Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
+  cid is a 2D array listing available currency.
+  The checkCashRegister() function should always return an object with a status key and a change key.
+  Return {status: "INSUFFICIENT_FUNDS", change: []} if cash-in-drawer is less than the change due, or if you cannot return the exact change.
+  Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for the key change if it is equal to the change due.
+  Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+*/
+
+/* Solution */
+checkCashRegister = (price, cash, cid) => {
+  const cashAvailable = 0;
+  const changeOwed = cash - price;
+  const change = {
+    "ONE HUNDRED": 100,
+    TWENTY: 20,
+    TEN: 10,
+    FIVE: 5,
+    ONE: 1,
+    QUARTER: 0.25,
+    DIME: 0.1,
+    NICKEL: 0.05,
+    PENNY: 0.01
+  };
+
+  let yourChange = {
+    status: "OPEN"
+  };
+
+  let yourChange = {
+    status: "OPEN",
+    change: []
+  };
+
+  let noFunds = {
+    status: "INSUFFICIENT_FUNDS",
+    change: []
+  };
+
+  let closed = {
+    status: "CLOSED",
+    change: cid
+  };
+
+  let flatt = cid.reduce((acc, curr) => {
+    return acc.concat(curr);
+  });
+
+  for (let i = 0; i < flatt.length; i++) {
+    if (typeof flatt[i] === "number") {
+      cashAvailable += flatt[i];
+    }
+  }
+  cashAvailable = Math.round(100 * cashAvailable) / 100;
+
+  if (cashAvailable < changeOwed) {
+    return noFunds;
+  } else if (cashAvailable === changeOwed) {
+    return closed;
+  }
+  //the below code is for coins only and changeOwed is less than one dollar.
+  let coins = 0;
+  for (let i = 3; i >= 0; i--) {
+    if (cid[i][1] > 0.0) {
+      coins += cid[i][1];
+    }
+  }
+  if (changeOwed > coins && changeOwed < 1.0) {
+    return noFunds;
+  }
+  //the below code if fo the actual change returned
+
+  let ans = [];
+  let compiler = 0;
+  for (let prop in change) {
+    let check = changeOwed - change[prop];
+    if (check < changeOwed && check > 0) {
+      for (let i = cid.length - 1; i > -1; i--) {
+        if (cid[i][0] === prop) {
+          let changeAvailable = cid[i][1];
+          console.log(changeAvailable);
+          while (
+            changeAvailable > 0 &&
+            changeOwed > 0 &&
+            changeOwed >= change[prop]
+          ) {
+            changeAvailable = changeAvailable - change[prop];
+            changeOwed = changeOwed - change[prop];
+            compiler += change[prop];
+            changeOwed = Math.round(100 * changeOwed) / 100;
+          }
+          ans.push([prop, compiler]);
+          compiler = 0;
+        }
+      }
+    }
+  }
+  yourChange.change = ans;
+
+  return yourChange;
+}
+checkCashRegister(19.5, 20, [
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100]
+]);
