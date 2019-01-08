@@ -35,3 +35,37 @@ const sumAll = (arr) => {
 }
 
 sumAll([1, 4]);
+
+/*
+  2.) Diff Two Arrays
+
+  Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both.
+  In other words, return the symmetric difference of the two arrays.
+
+  Note: 
+  You can return the array with its elements in any order.
+*/
+
+/* Solution */
+const diffArray = (arr1, arr2) => {
+  let newArr = [];
+
+  // loop through arr1 and check to see if arr1 element is present in arr2
+  for(let i = 0; i < arr1.length; i++){
+    if(arr2.includes(arr1[i]) === false){
+      newArr.push(arr1[i]);
+    }
+  }
+
+  // loop through arr2 and check to see if arr2 element is present in arr1
+  for(let i = 0; i < arr2.length; i++){
+    if(arr1.includes(arr2[i]) === false){
+      newArr.push(arr2[i]);
+    }
+  }
+
+  console.log(newArr);
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
