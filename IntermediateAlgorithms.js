@@ -71,6 +71,58 @@ const diffArray = (arr1, arr2) => {
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
 /*
+  3.) Seek and Destroy
+
+  You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments.
+  Remove all elements from the initial array that are of the same value as these arguments.
+
+  Note:
+  You have to use the arguments object.
+
+*/
+
+/* Solution */
+const destroyer = (arr) => {
+  // filter through the initial array (arguments[0])
+  let filtered_arr = arguments[0].filter(item => {
+    // create a new variable and use it to track if there is a match between item and argument. Set inital value to false
+    let match = false;
+    // loop through all the arguments and compare each argument to each item.
+    for(let i = 1; i < arguments.length; i++){
+      //  If there is a match, set match variable to true.
+      if(item === arguments[i]){
+        match = true;
+      }
+    }
+
+    // if there is no match, item gets included in the new array
+    if(match === false){
+      return item;
+    }
+  });
+
+  return filtered_arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
   7.) Search and Replace
 
   Perform a search and replace on the sentence using the arguments provided and return the new sentence.
