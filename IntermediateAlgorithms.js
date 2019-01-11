@@ -82,7 +82,7 @@ diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 */
 
 /* Solution */
-const destroyer = (arr) => {
+function destroyer(arr) {
   // filter through the initial array (arguments[0])
   let filtered_arr = arguments[0].filter(item => {
     // create a new variable and use it to track if there is a match between item and argument. Set inital value to false
