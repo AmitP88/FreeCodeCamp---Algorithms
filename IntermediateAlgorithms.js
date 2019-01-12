@@ -235,3 +235,51 @@ const pairElement = (str) => {
 }
 
 pairElement("GCG");
+
+/*
+  11.) Convert HTML Entities
+
+  Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+
+*/
+
+/* Solution */
+const convertHTML = (str) => {
+  // 1.) Split str into an array of strings
+  let str_arr = str.split('');
+
+  // 2.) Iterate through str_arr and perform actions based on element value
+  for(let i = 0; i < str_arr.length; i++){
+    switch(str_arr[i]){
+      case "&":
+        str_arr[i] = "&amp;";
+        break;
+      case "<":
+        str_arr[i] = "&lt;";
+        break;
+      case ">":
+        str_arr[i] = "&gt;";
+        break;
+      case "\"":
+        str_arr[i] = "&quot;";
+        break;
+      case "\'":
+        str_arr[i] = "&apos;";
+        break;
+      default:
+        str_arr[i];
+        break;
+    }
+  }
+
+  // 3.) Check str_arr to see if changes are correct
+  console.log(str_arr);
+
+  // 4.) When check passes, join str_arr into one string
+  let new_string = str_arr.join('');
+
+  // 5.) Return the new string
+  return new_string;
+}
+
+convertHTML("Dolce & Gabbana");
