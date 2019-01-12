@@ -283,3 +283,17 @@ const convertHTML = (str) => {
 }
 
 convertHTML("Dolce & Gabbana");
+
+/*
+  16.) Steamroller
+
+  Flatten a nested array. You must account for varying levels of nesting.
+*/
+
+/* Solution */
+const steamrollArray = (arr) => {
+  // Use array flat method and pass in 4 as the deepest array depth
+  return arr.flat(4);
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
