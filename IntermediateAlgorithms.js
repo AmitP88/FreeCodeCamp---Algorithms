@@ -176,3 +176,62 @@ const myReplace = (str, before, after) => {
 }
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+/*
+  8.) DNA Pairing
+
+  The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
+  Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+  Return the provided character as the first element in each array.
+  For example, for the input GCG, return [["G", "C"], ["C","G"],["G", "C"]]
+  The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
+
+*/
+
+/* Solution */
+const pairElement = (str) => {
+  /* In DNA pairing, the pairs are as follows:
+      A <-> T
+      C <-> G
+   */
+
+  // 1.) Split str into an array of strings.
+  let str_arr = str.split('');
+  console.log(str_arr);
+
+  // 2.) Create new empty array to store the smaller arrays
+  let pairs_arr = [];
+
+  // 3.) Iterate through str_arr
+  for(let i = 0; i < str_arr.length; i++){
+    // 4.) Perform an action based on value of str_arr[i]
+    switch(str_arr[i]){
+        /* 5.) In each case, pair up both str_arr[i] and it's match in an array, 
+               then push the new array into pairs_arr
+        */      
+      case 'A':
+        pairs_arr.push([str_arr[i], 'T']);
+        break;
+      case 'T':
+        pairs_arr.push([str_arr[i], 'A']);
+        break;
+      case 'C':
+        pairs_arr.push([str_arr[i], 'G']);
+        break;
+      case 'G':
+        pairs_arr.push([str_arr[i], 'C']);
+        break;
+      default:
+        return null;
+    }
+  } 
+
+  // 6.) Check to see if pairs_arr has correct DNA pairs
+  console.log(pairs_arr);
+
+  // 7.) Return pairs_arr
+  return pairs_arr;
+
+}
+
+pairElement("GCG");
